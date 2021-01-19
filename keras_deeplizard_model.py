@@ -17,7 +17,7 @@ model = Sequential([
 #compiling our model to prepare it for training
 
 model.compile(
-    optimizer=Adam(learning_rate = 0.001),
+    optimizer=Adam(learning_rate = 0.0001),
     loss = 'sparse_categorical_crossentropy',
     metrics=['accuracy']
 )
