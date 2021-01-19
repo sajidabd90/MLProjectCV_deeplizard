@@ -10,6 +10,7 @@ from sklearn.metrics import confusion_matrix
 import itertools
 import matplotlib.pyplot as plt 
 from custom_plot_function import plot_confusion_matrix
+from keras.models import load_model
 
 #building our model
 
@@ -33,7 +34,7 @@ model.fit(
           x=data_file.scaled_train_samples,
           y=data_file.train_labels,
           batch_size=10,
-          validation_split=0.3,
+          validation_split=0.15,
           epochs=30,
           verbose=2
           )
@@ -45,17 +46,14 @@ predictions = model.predict(
          verbose=0
         )
 
-for i in predictions:
-    print(i)
-
 #Classificational prediction 
 rounded_predictions = argmax(predictions,axis=-1)
-
-for i in rounded_predictions:
-    print(i)
 
 #creating confusion matrix 
 
 cm = confusion_matrix(y_true= data_file.test_labels,y_pred=rounded_predictions)
 
 plot_confusion_matrix(cm=cm,classes=['No side effects', 'Had side effects'],title='Confusion Matrix')
+
+#saving current model
+model.save('models/practice_side_effects_model.h5')
