@@ -28,6 +28,7 @@ model.fit(
           x=data_file.scaled_train_samples,
           y=data_file.train_labels,
           batch_size=10,
+          validation_split=0.3,
           epochs=30,
           verbose=2
           )
