@@ -1,3 +1,3 @@
-###Practice Follow along course from Deeplizard 
+### Practice Follow along course from Deeplizard 
 
-##Basics of ML and ANN using Keras
+## Basics of ML and ANN using Keras
