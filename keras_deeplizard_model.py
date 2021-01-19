@@ -6,6 +6,10 @@ from keras.layers import Activation, Dense
 from keras.optimizers import Adam
 from keras.metrics import sparse_categorical_crossentropy
 from numpy import argmax
+from sklearn.metrics import confusion_matrix
+import itertools
+import matplotlib.pyplot as plt 
+from custom_plot_function import plot_confusion_matrix
 
 #building our model
 
@@ -49,3 +53,9 @@ rounded_predictions = argmax(predictions,axis=-1)
 
 for i in rounded_predictions:
     print(i)
+
+#creating confusion matrix 
+
+cm = confusion_matrix(y_true= data_file.test_labels,y_pred=rounded_predictions)
+
+plot_confusion_matrix(cm=cm,classes=['No side effects', 'Had side effects'],title='Confusion Matrix')
