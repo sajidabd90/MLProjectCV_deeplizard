@@ -21,3 +21,13 @@ model.compile(
     loss = 'sparse_categorical_crossentropy',
     metrics=['accuracy']
 )
+
+#training the model 
+
+model.fit(
+          x=data_file.scaled_train_samples,
+          y=data_file.train_labels,
+          batch_size=10,
+          epochs=30,
+          verbose=2
+          )
