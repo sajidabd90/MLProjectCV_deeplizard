@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.layers import Activation, Dense
 from keras.optimizers import Adam
 from keras.metrics import sparse_categorical_crossentropy
+from numpy import argmax
 
 #building our model
 
@@ -32,3 +33,19 @@ model.fit(
           epochs=30,
           verbose=2
           )
+
+#Regressional probability prediction 
+predictions = model.predict(
+         x=data_file.scaled_test_samples,
+         batch_size=10,
+         verbose=0
+        )
+
+for i in predictions:
+    print(i)
+
+#Classificational prediction 
+rounded_predictions = argmax(predictions,axis=-1)
+
+for i in rounded_predictions:
+    print(i)
