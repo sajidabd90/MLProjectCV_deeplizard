@@ -41,3 +41,33 @@ train_labels, train_samples = shuffle(train_labels, train_samples)
 scaler = MinMaxScaler(feature_range= (0,1))
 scaled_train_samples = scaler.fit_transform(train_samples.reshape(-1,1))
 
+#creating test sets and generating dummy data
+
+test_samples = []
+test_labels = []
+
+for i in range(10):
+    random_younger = randint(13,64)
+    test_samples.append(random_younger)
+    test_labels.append(1)
+
+    random_older = randint(65,100)
+    test_samples.append(random_older)
+    test_labels.append(0)
+
+for i in range(200):
+    random_younger  = randint(13,64)
+    test_samples.append(random_younger)
+    test_labels.append(0)
+
+    random_older = randint(65,100)
+    test_samples.append(random_older)
+    test_labels.append(1)
+
+#converting test data into numpr arrays and preprocessing
+
+test_labels = np.array(test_labels)
+test_samples = np.array(test_samples)
+test_labels,test_samples = shuffle(test_labels,test_samples)
+
+scaled_test_samples = scaler.fit_transform(test_samples.reshape(-1,1))
